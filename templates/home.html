@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+        <img src="https://images.unsplash.com/photo-1566349872260-a1d88307b698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2002&q=80" alt="">
+    <p>Register or Login to search players</p>
+
+    <ul>
+        {% if 'user_id' not in session %}
+        <li><a href="/register"></a>Register</li>
+        <li><a href="/login"></a>Login</li>
+        {% endif %}
+
+        {% if 'user_id' in session %}
+        <li><a href="/logout"></a>Logout</li>
+        <li><a href="/dashboard"></a>Home</li>
+        {% endif %}
+    </ul>
+    
+
+ 
+    
+{% endblock %}
