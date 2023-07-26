@@ -60,6 +60,8 @@ class OffensiveSkillPlayers(db.Model):
         player_id = db.Column(db.Integer)
         team = db.Column(db.String)
         fumbles = db.Column(db.Integer)
+        receptions = db.Column(db.Integer)
+        receiving_yards_per_reception = db.Column(db.Integer)
         receiving_targets = db.Column(db.Integer)
         receiving_touchdowns = db.Column(db.Integer)
         receiving_yards = db.Column(db.Integer)
@@ -67,6 +69,7 @@ class OffensiveSkillPlayers(db.Model):
         rushing_touchdowns = db.Column(db.Integer)
         rushing_yards = db.Column(db.Integer)
         rushing_yards_per_attempt = db.Column(db.Integer)
+        rushing_long = db.Column(db.Integer)
         played = db.Column(db.Integer)
 
 class OffensiveLine(db.Model):
@@ -84,6 +87,7 @@ class OffensiveLine(db.Model):
         offensive_team_snaps = db.Column(db.Integer)
         offensive_snaps_played = db.Column(db.Integer)
         started = db.Column(db.Integer)
+        played = db.Column(db.Integer)
 
       
 class Qb(db.Model):

@@ -4,7 +4,7 @@ import requests
 from flask import Flask, render_template,redirect, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from forms import RegisterForm, LoginForm
-from models import db, connect_db, User, OffensiveSkillPlayers, Kicker, Qb, Punter, DefensiveSkillPlayers, OffensiveLine
+from models import db, connect_db, User
 from flask_bcrypt import Bcrypt
 from sqlalchemy.exc import IntegrityError
 
