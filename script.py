@@ -49,25 +49,21 @@ for team in TEAMS:
             qb = Qb(name=name, position=position, rushing_yards=rushing_yards,rushing_attempts=rushing_attempts,rushing_touchdowns=rushing_touchdowns,passing_yards=passing_yards, passing_touchdowns=passing_touchdowns,passing_completion_percentage=passing_completion_percentage,
                     passing_completions=passing_completions,passing_rating=passing_rating, played=played, team=team, activated=activated,
                     player_id=player_id,position_category=position_category, fumbles=fumbles)
-            
             db.session.add(qb)
             db.session.commit()
-         
+            
          if position == "RB":
-            rb = OffensiveSkillPlayers(name=name, position=position, rushing_yards=rushing_yards,rushing_attempts=rushing_attempts,
+                rb = OffensiveSkillPlayers(name=name, position=position, rushing_yards=rushing_yards,rushing_attempts=rushing_attempts,
                                        rushing_touchdowns=rushing_touchdowns, played=played, rushing_yards_per_attempt=rushing_yards_per_attempt,
                                        fumbles=fumbles, season=season, player_id=player_id, rushing_long=rushing_long, receptions=receptions,
                                        position_category=position_category, activated=activated, team=team, receiving_yards=receiving_yards)
-               
-            db.session.add(rb)
-            db.session.commit()
-         
+                db.session.add(rb)
+                db.session.commit()
          if position == "WR":
             wr = OffensiveSkillPlayers(name=name, position=position, played=played, team=team, activated=activated,
                                        player_id=player_id, season=season, position_category=position_category, fumbles=fumbles,
                                        receiving_targets=receiving_targets, receptions=receptions, receiving_yards_per_reception=receiving_yards_per_reception,
                                        receiving_touchdowns=receiving_touchdowns)
-                  
             db.session.add(wr)
             db.session.commit()
 
@@ -89,8 +85,9 @@ for team in TEAMS:
                                        position_category=position_category, activated=activated, team=team, receiving_yards=receiving_yards)
             db.session.add(fb)
             db.session.commit()
-
-         elif key["PositionCategory"] == "ST" and key["Position"] == OFFENSIVE_SKILL_PLAYERS:
+            
+            elif key["PositionCategory"] == "ST" and key["Position"] == OFFENSIVE_SKILL_PLAYERS:
+            
             name = key["Name"]
             position = key["Position"]
             played = key["Played"]
@@ -200,11 +197,9 @@ for team in TEAMS:
                      
             db.session.add(c)
             db.session.commit()
-
-               
-                     
-
+            
          elif key["PositionCategory"] == "DEF" and key["Position"] in DEFENSIVE_SKILL_PLAYERS:
+            
             name = key["Name"]
             position = key["Position"]
             played = key["Played"]
@@ -225,71 +220,78 @@ for team in TEAMS:
             interception_return_touchdowns = key["InterceptionReturnTouchdowns"]
             defensive_touchdowns = key["DefensiveTouchdowns"]
             safeties = key["Safeties"]
-
-         if position == "DL":
-            dl = DefensiveSkillPlayers(name=name, position=position, position_category=position_category, activated=activated, team=team,
-                                       season=season, player_id=player_id, sacks=sacks, tackles_for_loss=tackles_for_loss,
-                                       solo_tackles=solo_tackles, assisted_tackles=assisted_tackles, sack_yards=sack_yards, passes_defended=passes_defended,
-                                       fumbles_forced=fumbles_forced, fumbles_recovered=fumbles_recovered, interceptions=interceptions,
-                                       interception_return_touchdowns=interception_return_touchdowns, defensive_touchdowns=defensive_touchdowns,
-                                       safeties=safeties)
+            
+            if position == "DL":
+               
+               dl = DefensiveSkillPlayers(name=name, position=position, position_category=position_category, activated=activated, team=team,
+                                          season=season, player_id=player_id, sacks=sacks, tackles_for_loss=tackles_for_loss,
+                                          solo_tackles=solo_tackles, assisted_tackles=assisted_tackles, sack_yards=sack_yards, passes_defended=passes_defended,
+                                          fumbles_forced=fumbles_forced, fumbles_recovered=fumbles_recovered, interceptions=interceptions,
+                                          interception_return_touchdowns=interception_return_touchdowns, defensive_touchdowns=defensive_touchdowns,
+                                          safeties=safeties)
+               
+               db.session.add(dl)
+               db.session.commit()
+               
+               if position == "DE":
+                  
+                  de = DefensiveSkillPlayers(name=name, position=position, position_category=position_category, activated=activated, team=team,
+                                             season=season, player_id=player_id, sacks=sacks, tackles_for_loss=tackles_for_loss,
+                                             solo_tackles=solo_tackles, assisted_tackles=assisted_tackles, sack_yards=sack_yards, passes_defended=passes_defended,
+                                             fumbles_forced=fumbles_forced, fumbles_recovered=fumbles_recovered, interceptions=interceptions,
+                                             interception_return_touchdowns=interception_return_touchdowns, defensive_touchdowns=defensive_touchdowns,
+                                             safeties=safeties)
+                  
+                  db.session.add(de)
+                  db.session.commit()
+                  
+                  if position == "LB":
+                     
+                     lb = DefensiveSkillPlayers(name=name, position=position, position_category=position_category, activated=activated, team=team,
+                                                season=season, player_id=player_id, sacks=sacks, tackles_for_loss=tackles_for_loss,
+                                                solo_tackles=solo_tackles, assisted_tackles=assisted_tackles, sack_yards=sack_yards, passes_defended=passes_defended,
+                                                fumbles_forced=fumbles_forced, fumbles_recovered=fumbles_recovered, interceptions=interceptions,
+                                                interception_return_touchdowns=interception_return_touchdowns, defensive_touchdowns=defensive_touchdowns,
+                                                safeties=safeties)
+                     
+                     db.session.add(lb)
+                     db.session.commit()
+                     
+                     if position == "CB":
                         
-            db.session.add(dl)
-            db.session.commit()
-
-         if position == "DE":
-            de = DefensiveSkillPlayers(name=name, position=position, position_category=position_category, activated=activated, team=team,
-                                       season=season, player_id=player_id, sacks=sacks, tackles_for_loss=tackles_for_loss,
-                                       solo_tackles=solo_tackles, assisted_tackles=assisted_tackles, sack_yards=sack_yards, passes_defended=passes_defended,
-                                       fumbles_forced=fumbles_forced, fumbles_recovered=fumbles_recovered, interceptions=interceptions,
-                                       interception_return_touchdowns=interception_return_touchdowns, defensive_touchdowns=defensive_touchdowns,
-                                       safeties=safeties)
-            db.session.add(de)
-            db.session.commit()
-                      
-         if position == "LB":
-            lb = DefensiveSkillPlayers(name=name, position=position, position_category=position_category, activated=activated, team=team,
-                                       season=season, player_id=player_id, sacks=sacks, tackles_for_loss=tackles_for_loss,
-                                       solo_tackles=solo_tackles, assisted_tackles=assisted_tackles, sack_yards=sack_yards, passes_defended=passes_defended,
-                                       fumbles_forced=fumbles_forced, fumbles_recovered=fumbles_recovered, interceptions=interceptions,
-                                       interception_return_touchdowns=interception_return_touchdowns, defensive_touchdowns=defensive_touchdowns,
-                                       safeties=safeties)
-                         
-            db.session.add(lb)
-            db.session.commit()
-                         
-         if position == "CB":
-            cb = DefensiveSkillPlayers(name=name, position=position, position_category=position_category, activated=activated, team=team,
-                                       season=season, player_id=player_id, sacks=sacks, tackles_for_loss=tackles_for_loss,
-                                       solo_tackles=solo_tackles, assisted_tackles=assisted_tackles, sack_yards=sack_yards, passes_defended=passes_defended,
-                                       fumbles_forced=fumbles_forced, fumbles_recovered=fumbles_recovered, interceptions=interceptions,
-                                       interception_return_touchdowns=interception_return_touchdowns, defensive_touchdowns=defensive_touchdowns,
-                                       safeties=safeties)
+                        cb = DefensiveSkillPlayers(name=name, position=position, position_category=position_category, activated=activated, team=team,
+                                                   season=season, player_id=player_id, sacks=sacks, tackles_for_loss=tackles_for_loss,
+                                                   solo_tackles=solo_tackles, assisted_tackles=assisted_tackles, sack_yards=sack_yards, passes_defended=passes_defended,
+                                                   fumbles_forced=fumbles_forced, fumbles_recovered=fumbles_recovered, interceptions=interceptions,
+                                                   interception_return_touchdowns=interception_return_touchdowns, defensive_touchdowns=defensive_touchdowns,
+                                                   safeties=safeties)
                         
-            db.session.add(cb)
-            db.session.commit()
+                        db.session.add(cb)
+                        db.session.commit()
                         
-         if position == "SS":
-            ss = DefensiveSkillPlayers(name=name, position=position, position_category=position_category, activated=activated, team=team,
-                                       season=season, player_id=player_id, sacks=sacks, tackles_for_loss=tackles_for_loss,
-                                       solo_tackles=solo_tackles, assisted_tackles=assisted_tackles, sack_yards=sack_yards, passes_defended=passes_defended,
-                                       fumbles_forced=fumbles_forced, fumbles_recovered=fumbles_recovered, interceptions=interceptions,
-                                       interception_return_touchdowns=interception_return_touchdowns, defensive_touchdowns=defensive_touchdowns,
-                                       safeties=safeties)
-                        
-            db.session.add(ss)
-            db.session.commit()
-                        
-         if position == "FS":
-            fs = DefensiveSkillPlayers(name=name, position=position, position_category=position_category, activated=activated, team=team,
-                                       season=season, player_id=player_id, sacks=sacks, tackles_for_loss=tackles_for_loss,
-                                       solo_tackles=solo_tackles, assisted_tackles=assisted_tackles, sack_yards=sack_yards, passes_defended=passes_defended,
-                                       fumbles_forced=fumbles_forced, fumbles_recovered=fumbles_recovered, interceptions=interceptions,
-                                       interception_return_touchdowns=interception_return_touchdowns, defensive_touchdowns=defensive_touchdowns,
-                                       safeties=safeties)
-                        
-            db.session.add(fs)
-            db.session.commit()
+                        if position == "SS":
+                           
+                           ss = DefensiveSkillPlayers(name=name, position=position, position_category=position_category, activated=activated, team=team,
+                                                      season=season, player_id=player_id, sacks=sacks, tackles_for_loss=tackles_for_loss,
+                                                      solo_tackles=solo_tackles, assisted_tackles=assisted_tackles, sack_yards=sack_yards, passes_defended=passes_defended,
+                                                      fumbles_forced=fumbles_forced, fumbles_recovered=fumbles_recovered, interceptions=interceptions,
+                                                      interception_return_touchdowns=interception_return_touchdowns, defensive_touchdowns=defensive_touchdowns,
+                                                      safeties=safeties)
+                           
+                           db.session.add(ss)
+                           db.session.commit()
+                           
+                           if position == "FS":
+                              
+                              fs = DefensiveSkillPlayers(name=name, position=position, position_category=position_category, activated=activated, team=team,
+                                                         season=season, player_id=player_id, sacks=sacks, tackles_for_loss=tackles_for_loss,
+                                                         solo_tackles=solo_tackles, assisted_tackles=assisted_tackles, sack_yards=sack_yards, passes_defended=passes_defended,
+                                                         fumbles_forced=fumbles_forced, fumbles_recovered=fumbles_recovered, interceptions=interceptions,
+                                                         interception_return_touchdowns=interception_return_touchdowns, defensive_touchdowns=defensive_touchdowns,
+                                                         safeties=safeties)
+                              
+                              db.session.add(fs)
+                              db.session.commit()
 
                     
 
